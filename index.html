@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RSN Portfolio</title>
+
+  <!-- Link to CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Fonts (Roboto) -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <div class="logo">RSN</div>
+    <nav>
+      <button class="nav-btn active" data-section="about">About</button>
+      <button class="nav-btn" data-section="portfolio">Portfolio</button>
+      <button class="nav-btn" data-section="resume">Resume</button>
+    </nav>
+    <div class="top-actions">
+      <!-- Theme toggle -->
+      <button id="theme-toggle">🌙</button>
+      <!-- Fullscreen toggle -->
+      <button id="fullscreen-toggle">⛶</button>
+    </div>
+  </header>
+
+  <!-- SECTIONS -->
+  <main>
+    <!-- ABOUT PAGE -->
+    <section id="about" class="page active">
+      <div class="about-container">
+        <!-- Replace profile.jpg with your photo in assets folder -->
+        <img src="assets/profile.jpg" alt="Profile" class="profile-pic" />
+        <h1>Hello, I'm RSN</h1>
+        <p>This is my short bio. You can edit this later in <code>index.html</code>.</p>
+        <div class="social-links">
+          <!-- Replace # with your links -->
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+          <a href="#">Twitter</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO PAGE -->
+    <section id="portfolio" class="page">
+      <div class="progress-bar"></div>
+      <button class="drawer-toggle">☰</button>
+      <aside class="drawer">
+        <h3>Portfolio Sections</h3>
+        <a href="#proj1">Project 1</a>
+        <a href="#ach1">Achievement 1</a>
+      </aside>
+
+      <div class="portfolio-content">
+        <h2 id="proj1">Project 1</h2>
+        <p>Minimal placeholder project. Edit me in <code>index.html</code>.</p>
+
+        <h2 id="ach1">Achievement 1</h2>
+        <p>Minimal placeholder achievement. Edit me in <code>index.html</code>.</p>
+      </div>
+
+      <!-- Back to top button -->
+      <button class="back-to-top">↑</button>
+    </section>
+
+    <!-- RESUME PAGE -->
+    <section id="resume" class="page">
+      <div class="resume-container">
+        <!-- Shows resume.pdf from assets folder -->
+        <iframe src="assets/resume.pdf" class="resume-frame"></iframe>
+        <a href="assets/resume.pdf" download class="download-btn">Download Resume</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Made with ❤️ RSN</p>
+  </footer>
+
+  <!-- Link to JS -->
+  <script src="script.js"></script>
+</body>
+</html>
