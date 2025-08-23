@@ -4,74 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RSN Portfolio</title>
-
-  <!-- Link to CSS -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Google Fonts (Roboto) -->
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- NAVBAR -->
+  <!-- HEADER -->
   <header>
     <div class="logo">RSN</div>
-    <nav>
+    <nav class="nav-links">
       <button class="nav-btn active" data-section="about">About</button>
       <button class="nav-btn" data-section="portfolio">Portfolio</button>
       <button class="nav-btn" data-section="resume">Resume</button>
     </nav>
-    <div class="top-actions">
-      <!-- Theme toggle -->
-      <button id="theme-toggle">🌙</button>
-      <!-- Fullscreen toggle -->
-      <button id="fullscreen-toggle">⛶</button>
+    <div class="controls">
+      <button id="fullscreen-btn" title="Fullscreen">⛶</button>
+      <button id="theme-btn" title="Toggle Theme">🌙</button>
     </div>
   </header>
 
-  <!-- SECTIONS -->
+  <!-- MAIN CONTENT -->
   <main>
-    <!-- ABOUT PAGE -->
-    <section id="about" class="page active">
-      <div class="about-container">
-        <!-- Replace profile.jpg with your photo in assets folder -->
-        <img src="assets/profile.jpg" alt="Profile" class="profile-pic" />
-        <h1>Hello, I'm RSN</h1>
-        <p>This is my short bio. You can edit this later in <code>index.html</code>.</p>
+    <!-- ABOUT -->
+    <section id="about" class="page-section active">
+      <div class="about-content">
+        <img src="assets/profile.jpg" alt="Profile Photo" class="profile-pic">
+        <h1>Your Name</h1>
+        <p class="bio">Replace this with your short professional bio.</p>
         <div class="social-links">
-          <!-- Replace # with your links -->
           <a href="#">LinkedIn</a>
           <a href="#">GitHub</a>
-          <a href="#">Twitter</a>
+          <a href="#">Email</a>
         </div>
       </div>
     </section>
 
-    <!-- PORTFOLIO PAGE -->
-    <section id="portfolio" class="page">
-      <div class="progress-bar"></div>
-      <button class="drawer-toggle">☰</button>
-      <aside class="drawer">
-        <h3>Portfolio Sections</h3>
-        <a href="#proj1">Project 1</a>
-        <a href="#ach1">Achievement 1</a>
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="page-section">
+      <div id="progress-bar"></div>
+      <button id="drawer-toggle">☰</button>
+      <aside id="drawer">
+        <button id="drawer-close">✕</button>
+        <ul>
+          <li><a href="#proj1">Project 1</a></li>
+          <li><a href="#ach1">Achievement 1</a></li>
+        </ul>
       </aside>
-
       <div class="portfolio-content">
         <h2 id="proj1">Project 1</h2>
-        <p>Minimal placeholder project. Edit me in <code>index.html</code>.</p>
-
+        <p>Placeholder project description.</p>
         <h2 id="ach1">Achievement 1</h2>
-        <p>Minimal placeholder achievement. Edit me in <code>index.html</code>.</p>
+        <p>Placeholder achievement description.</p>
       </div>
-
-      <!-- Back to top button -->
-      <button class="back-to-top">↑</button>
+      <button id="back-to-top">↑</button>
     </section>
 
-    <!-- RESUME PAGE -->
-    <section id="resume" class="page">
+    <!-- RESUME -->
+    <section id="resume" class="page-section">
       <div class="resume-container">
-        <!-- Shows resume.pdf from assets folder -->
         <iframe src="assets/resume.pdf" class="resume-frame"></iframe>
         <a href="assets/resume.pdf" download class="download-btn">Download Resume</a>
       </div>
@@ -79,11 +68,8 @@
   </main>
 
   <!-- FOOTER -->
-  <footer>
-    <p>Made with ❤️ RSN</p>
-  </footer>
+  <footer>Made with ❤️ RSN</footer>
 
-  <!-- Link to JS -->
   <script src="script.js"></script>
 </body>
 </html>
