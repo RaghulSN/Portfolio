@@ -1,74 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RSN Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Raghul Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="logo">RSN</div>
-    <nav class="nav-links">
-      <button class="nav-btn active" data-section="about">About</button>
-      <button class="nav-btn" data-section="portfolio">Portfolio</button>
-      <button class="nav-btn" data-section="resume">Resume</button>
-    </nav>
-    <div class="controls">
-      <button id="fullscreen-btn" title="Fullscreen">⛶</button>
-      <button id="theme-btn" title="Toggle Theme">🌙</button>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="left">
+      <div class="logo">RSN</div>
+    </div>
+
+    <div class="right-controls">
+      <button id="fullscreen-btn" class="icon" title="Toggle fullscreen">⛶</button>
+      <button id="theme-btn" class="icon" title="Toggle theme">🌙</button>
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main>
-    <!-- ABOUT -->
-    <section id="about" class="page-section active">
-      <div class="about-content">
-        <img src="assets/profile.jpg" alt="Profile Photo" class="profile-pic">
-        <h1>Your Name</h1>
-        <p class="bio">Replace this with your short professional bio.</p>
-        <div class="social-links">
-          <a href="#">LinkedIn</a>
-          <a href="#">GitHub</a>
-          <a href="#">Email</a>
+  <!-- NAV ROW (centered under topbar) -->
+  <div class="navrow">
+    <button class="nav-btn active" data-section="about">About</button>
+    <button class="nav-btn" data-section="portfolio">Portfolio</button>
+    <button class="nav-btn" data-section="resume">Resume</button>
+  </div>
+
+  <!-- MAIN: three SPA sections -->
+  <main id="main-area">
+    <!-- ABOUT (landing) -->
+    <section id="about" class="page-section active" aria-label="About (landing)">
+      <div class="about-card">
+        <!-- replace this image with assets/profile.jpg -->
+        <img class="profile-photo" src="assets/profile.jpg" alt="Profile photo" />
+        <div class="about-text">
+          <h1 class="name">Raghul S Nair</h1>
+          <div class="role-row">
+            <span id="role-rotator">Data Scientist</span><span class="pipe">|</span>
+          </div>
+          <p class="bio">
+            Self-driven Data Scientist with a strong mathematical foundation. I build ML solutions,
+            dashboards, and data pipelines—turning complex data into actionable insights.
+          </p>
+
+          <div class="cta-row">
+            <button class="btn primary" data-section="portfolio">View Portfolio</button>
+            <a class="btn outline" href="assets/Raghul_S_Nair_Resume.pdf" download>Download Resume</a>
+          </div>
+
+          <div class="socials">
+            <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/RaghulSN" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.kaggle.com/raghulsn" target="_blank" rel="noopener">Kaggle</a>
+            <a href="mailto:you@example.com">Email</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio" class="page-section">
-      <div id="progress-bar"></div>
-      <button id="drawer-toggle">☰</button>
-      <aside id="drawer">
-        <button id="drawer-close">✕</button>
-        <ul>
-          <li><a href="#proj1">Project 1</a></li>
-          <li><a href="#ach1">Achievement 1</a></li>
-        </ul>
+    <!-- PORTFOLIO (ONLY scrollable) -->
+    <section id="portfolio" class="page-section" aria-label="Portfolio">
+      <div id="progress-bar" aria-hidden="true"></div>
+
+      <!-- drawer toggle (only used when Portfolio active) -->
+      <button id="drawer-toggle" class="drawer-toggle" aria-label="Open sections">☰</button>
+
+      <!-- Drawer (left push) -->
+      <aside id="drawer" aria-hidden="true">
+        <button id="drawer-close" class="drawer-close" aria-label="Close drawer">✕</button>
+        <nav id="drawer-nav" class="drawer-nav" aria-label="Portfolio sections">
+          <!-- populated automatically from .card[id] in portfolio -->
+        </nav>
       </aside>
-      <div class="portfolio-content">
-        <h2 id="proj1">Project 1</h2>
-        <p>Placeholder project description.</p>
-        <h2 id="ach1">Achievement 1</h2>
-        <p>Placeholder achievement description.</p>
+
+      <div class="portfolio-inner">
+        <!-- Cards: add/edit cards here -->
+        <article class="card" id="skills">
+          <h2>Skills</h2>
+          <p>Python · SQL · Pandas · NumPy · Scikit-learn · Model evaluation · Visualization (Matplotlib, Seaborn, Plotly) · Power BI</p>
+        </article>
+
+        <article class="card" id="experience">
+          <h2>Experience</h2>
+          <p><strong>Data Science Intern — iDatalytics (Jan 2025 — Present)</strong><br>
+            Built data pipelines, cleaned large datasets, engineered features, and deployed models for business insights.
+          </p>
+        </article>
+
+        <article class="card" id="projects">
+          <h2>Projects</h2>
+
+          <div class="project">
+            <div class="proj-title">
+              <h3>Telecom Churn Prediction</h3>
+              <div class="proj-meta"><a href="https://github.com/RaghulSN/Telecom-Customer-Churn-Prediction" target="_blank" rel="noopener">GitHub</a></div>
+            </div>
+            <div class="proj-desc">
+              <p>End-to-end ML pipeline with interpretable models to improve retention ROI and targeted campaigns.</p>
+            </div>
+          </div>
+
+          <!-- add more .project blocks as needed -->
+        </article>
+
+        <article class="card" id="education">
+          <h2>Education</h2>
+          <p>B.Sc. Mathematics — University of Kerala (2017–2020)</p>
+        </article>
+
+        <article class="card" id="certifications">
+          <h2>Certifications</h2>
+          <ul>
+            <li>IBM Data Analyst / IBM Data Science / IBM Machine Learning</li>
+            <li>NSDC Certified — Data Science & AI (Avodha, 2025)</li>
+          </ul>
+        </article>
       </div>
-      <button id="back-to-top">↑</button>
+
+      <button id="back-to-top" class="back-top" aria-label="Back to top">↑</button>
     </section>
 
-    <!-- RESUME -->
-    <section id="resume" class="page-section">
-      <div class="resume-container">
-        <iframe src="assets/resume.pdf" class="resume-frame"></iframe>
-        <a href="assets/resume.pdf" download class="download-btn">Download Resume</a>
+    <!-- RESUME (single-page PDF in a box) -->
+    <section id="resume" class="page-section" aria-label="Resume">
+      <div class="resume-box">
+        <div class="resume-header">
+          <span class="resume-title">Resume</span>
+          <div class="resume-actions">
+            <button id="resume-fullscreen" class="small-icon" title="Fullscreen resume">⛶</button>
+            <button id="resume-theme" class="small-icon" title="Toggle resume theme">🌙</button>
+            <a href="assets/Raghul_S_Nair_Resume.pdf" download class="resume-download">Download</a>
+          </div>
+        </div>
+
+        <!-- Embedded single-page PDF. If embed fails, the download link works. -->
+        <object data="assets/Raghul_S_Nair_Resume.pdf" type="application/pdf" class="resume-object" aria-label="Resume PDF">
+          <p>Unable to display PDF. <a href="assets/Raghul_S_Nair_Resume.pdf" download>Download</a>.</p>
+        </object>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer>Made with ❤️ RSN</footer>
+  <!-- Footer -->
+  <footer class="site-footer">Made with ❤️ Raghul</footer>
 
   <script src="script.js"></script>
 </body>
