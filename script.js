@@ -1,89 +1,151 @@
-/* -----------------------------
-   GLOBAL STYLES
------------------------------ */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+/* script.js - SPA: About / Portfolio / Resume
+   - Put your assets in /assets (profile.jpg, Raghul_S_Nair_Resume.pdf)
+   - Drawer links are auto-populated from portfolio .card[id]
+*/
 
-:root {
-  --accent: #3498db;
-  --text-light: #fff;
-  --text-dark: #111;
-  --footer-height: 40px;
+// elements
+const navBtns = document.querySelectorAll('.nav-btn');
+const sections = document.querySelectorAll('.page-section');
+const drawerToggle = document.getElementById('drawer-toggle');
+const drawer = document.getElementById('drawer');
+const drawerClose = document.getElementById('drawer-close');
+const mainBody = document.body;
+const progressBar = document.getElementById('progress-bar');
+const backTop = document.getElementById('back-to-top');
+const portfolioSection = document.getElementById('portfolio');
+const resumeBox = document.querySelector('.resume-box');
+
+// show a section (SPA, instant slide)
+function showSection(id) {
+  sections.forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  // nav active
+  navBtns.forEach(b => b.classList.toggle('active', b.dataset.section === id));
+
+  // reset scroll for shown section
+  const sec = document.getElementById(id);
+  if (sec) sec.scrollTop = 0;
+
+  // drawer & helpers only for portfolio
+  if (id === 'portfolio') {
+    // show drawer button (CSS may also hide/show by width)
+    if (drawerToggle) drawerToggle.style.display = '';
+    // ensure progress bar visible and reset
+    if (progressBar) progressBar.style.width = '0%';
+  } else {
+    // hide drawer button and close drawer if open
+    if (drawerToggle) drawerToggle.style.display = 'none';
+    drawer.classList.remove('open');
+    mainBody.classList.remove('drawer-open');
+    // hide progress/back-top
+    if (progressBar) progressBar.style.width = '0%';
+    if (backTop) backTop.style.display = 'none';
+  }
 }
 
-/* Reset & body */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: 'Roboto', sans-serif;
-  overflow: hidden;
-  color: var(--text-light);
+// nav buttons
+navBtns.forEach(btn => btn.addEventListener('click', () => showSection(btn.dataset.section)));
+
+// hero CTA buttons that reference data-section
+document.querySelectorAll('.btn[data-section]').forEach(b => {
+  b.addEventListener('click', () => {
+    const sec = b.dataset.section;
+    if (sec) showSection(sec);
+  });
+});
+
+// default landing page
+showSection('about');
+
+// Fullscreen toggle (top-right)
+document.getElementById('fullscreen-btn').addEventListener('click', () => {
+  if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(()=>{});
+  else document.exitFullscreen().catch(()=>{});
+});
+
+// theme (dark/light)
+const themeBtn = document.getElementById('theme-btn');
+themeBtn.addEventListener('click', () => {
+  mainBody.classList.toggle('light');
+  themeBtn.textContent = mainBody.classList.contains('light') ? '☀️' : '🌙';
+});
+
+// Drawer open/close
+if (drawerToggle) {
+  drawerToggle.addEventListener('click', () => {
+    drawer.classList.add('open');
+    mainBody.classList.add('drawer-open');
+    drawer.setAttribute('aria-hidden','false');
+  });
 }
-body.light { color: var(--text-dark); }
-
-/* Wallpaper background */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: url('assets/wallpaper.jpg') center/cover no-repeat;
-  z-index: -2;
+if (drawerClose) {
+  drawerClose.addEventListener('click', () => {
+    drawer.classList.remove('open');
+    mainBody.classList.remove('drawer-open');
+    drawer.setAttribute('aria-hidden','true');
+  });
 }
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { drawer.classList.remove('open'); mainBody.classList.remove('drawer-open'); } });
 
-/* Overlay gradients */
-#about::before, #portfolio::before {
-  content: "";
-  position: absolute; top:0;left:0;right:0;bottom:0;
-  z-index:-1;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
+// populate drawer from portfolio card headings
+function populateDrawer() {
+  const nav = document.getElementById('drawer-nav');
+  if (!nav) return;
+  nav.innerHTML = '';
+  const cards = Array.from(document.querySelectorAll('#portfolio .card[id]'));
+  cards.forEach(card => {
+    const a = document.createElement('a');
+    a.href = '#';
+    a.textContent = card.querySelector('h2')?.textContent || card.id;
+    a.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      const top = card.offsetTop;
+      portfolioSection.scrollTo({ top: top - 8, behavior: 'smooth' });
+      drawer.classList.remove('open');
+      mainBody.classList.remove('drawer-open');
+    });
+    nav.appendChild(a);
+  });
 }
-#resume::before {
-  content: "";
-  position: absolute; top:0;left:0;right:0;bottom:0;
-  z-index:-1;
-  background: rgba(0,0,0,0.35);
+populateDrawer();
+
+// portfolio progress + back to top
+if (portfolioSection) {
+  portfolioSection.addEventListener('scroll', () => {
+    const st = portfolioSection.scrollTop;
+    const sh = portfolioSection.scrollHeight - portfolioSection.clientHeight;
+    const pct = sh > 0 ? (st / sh) * 100 : 0;
+    progressBar.style.width = pct + '%';
+    backTop.style.display = st > 220 ? 'block' : 'none';
+  });
 }
+if (backTop) backTop.addEventListener('click', () => portfolioSection.scrollTo({ top: 0, behavior: 'smooth' }));
 
-/* Header */
-header {
-  position: fixed; top:0; left:0; right:0; height:60px;
-  display:flex; justify-content:space-between; align-items:center;
-  padding:0 20px; z-index:1000;
-  background: rgba(0,0,0,0.5);
-}
-.logo { font-family: cursive; font-size:1.5em; }
-.nav-links { display:flex; gap:15px; }
-.nav-btn {
-  background:transparent; border:none; color:inherit;
-  padding:6px 12px; border-radius:6px; cursor:pointer;
-  transition: background 0.3s;
-}
-.nav-btn.active { background: var(--accent); color:#fff; }
-.controls button { margin-left:10px; cursor:pointer; background:transparent; border:none; font-size:1.2em; }
+// resume box controls
+document.getElementById('resume-fullscreen')?.addEventListener('click', () => {
+  if (!document.fullscreenElement) resumeBox.requestFullscreen().catch(()=>{});
+  else document.exitFullscreen().catch(()=>{});
+});
+document.getElementById('resume-theme')?.addEventListener('click', () => {
+  resumeBox.classList.toggle('light-resume');
+});
 
-/* Sections */
-.page-section { display:none; position:relative; height:100%; overflow-y:auto; padding:80px 20px 60px; }
-.page-section.active { display:block; }
-
-/* About content */
-.about-content { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; text-align:center; }
-.profile-pic { width:120px; height:120px; border-radius:50%; margin-bottom:15px; }
-.social-links { margin-top:10px; display:flex; gap:15px; font-size:1.5em; }
-
-/* Portfolio drawer & progress */
-#progress-bar { position:fixed; top:60px; left:0; height:4px; width:0%; background:var(--accent); z-index:100; }
-#drawer-toggle { position:fixed; top:70px; left:20px; font-size:1.5em; background:transparent; border:none; z-index:200; cursor:pointer; }
-#drawer { position:fixed; top:0; left:-250px; width:250px; height:100%; background:rgba(0,0,0,0.9); padding:20px; transition:0.3s; z-index:300; }
-#drawer.open { left:0; }
-#drawer ul { list-style:none; margin-top:60px; }
-#drawer li { margin-bottom:15px; }
-#drawer a { color:#fff; text-decoration:none; }
-#drawer-close { position:absolute; top:20px; right:20px; background:transparent; border:none; font-size:1.5em; color:#fff; cursor:pointer; }
-.portfolio-content { max-width:800px; margin:auto; }
-#back-to-top { position:fixed; bottom:60px; right:20px; display:none; background:var(--accent); border:none; padding:10px 15px; border-radius:50%; font-size:1.2em; color:#fff; cursor:pointer; }
-
-/* Resume */
-.resume-container { display:flex; flex-direction:column; align-items:center; gap:15px; }
-.resume-frame { width:80%; height:80vh; border:none; }
-.download-btn { background:var(--accent); color:#fff; padding:10px 20px; border-radius:8px; text-decoration:none; }
-
-/* Footer */
-footer { position:fixed; bottom:0; left:0; right:0; height:var(--footer-height); display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.5); }
+// simple role rotator for About hero
+(function roleRotator(){
+  const roles = ['Data Scientist','ML Engineer','Data Analyst'];
+  const el = document.getElementById('role-rotator');
+  if (!el) return;
+  let i = 0, j = 0, deleting = false;
+  function tick() {
+    const current = roles[i];
+    el.textContent = current.slice(0, j);
+    if (!deleting) {
+      if (j++ < current.length) setTimeout(tick, 70);
+      else { deleting = true; setTimeout(tick, 900); }
+    } else {
+      if (j-- > 0) setTimeout(tick, 40);
+      else { deleting = false; i = (i+1) % roles.length; setTimeout(tick, 200); }
+    }
+  }
+  tick();
+})();
