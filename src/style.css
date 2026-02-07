@@ -1741,173 +1741,194 @@ body:not(.light-mode) .moon-icon {
     /* Visual adjustment */
 }
 
-/* Responsive */
-/* Responsive */
+/* ========================================
+   MOBILE RESPONSIVENESS (max-width: 768px)
+   ======================================== */
 @media (max-width: 768px) {
 
-    /* 1. Global Overflow Fix */
+    /* Global Fixes */
     html,
     body {
         overflow-x: hidden;
-        width: 100%;
-        position: relative;
     }
 
-    /* 2. Navigation Adjustments */
+    /* Navigation */
     .nav-island {
-        width: 90%;
-        max-width: none;
-        padding: 5px;
-        top: 15px;
-        transform: translateX(-50%) scale(0.9);
-        /* Slightly smaller */
+        width: 95%;
+        padding: 3px;
     }
 
     .nav-btn {
-        padding: 0.6rem 0.8rem;
-        font-size: 0.8rem;
-        /* Smaller text */
+        padding: 0.5rem 0.9rem;
+        font-size: 0.75rem;
     }
 
     .logo-container {
-        display: none;
-        /* Hide logo to save space */
+        top: 20px;
+        left: 5%;
+        font-size: 1.5rem;
+        /* Smaller logo */
     }
 
     .controls-container {
-        top: 80px;
-        /* Push below nav */
-        right: 10px;
-        transform: scale(0.8);
+        top: 20px;
+        right: 5%;
     }
 
-    .view-section {
-        padding-top: 60px;
-        /* Less top padding */
+    /* Hero Section */
+    .hero-section {
+        padding: 1rem;
+        min-height: calc(100vh - 40px);
     }
 
-    /* 3. Hero Section Typography */
+    .hero-content {
+        padding: 0 1rem;
+    }
+
     .hero-title {
-        font-size: 2.5rem;
-        /* Smaller H1 */
-        text-align: center;
-        margin-top: 2rem;
+        font-size: 2rem !important;
+        line-height: 1.2;
     }
 
     .hero-subtitle {
-        font-size: 1rem;
-        text-align: center;
-        padding: 0 1rem;
-        margin-bottom: 2rem;
+        font-size: 0.95rem !important;
     }
 
     .hero-bottom-container {
         flex-direction: column;
         gap: 1.5rem;
-        /* Tighter gap */
-        bottom: 2rem;
-        /* Higher from bottom */
-        width: 100%;
+        bottom: 3rem;
         padding: 0 1rem;
     }
 
     .hero-separator {
-        width: 50px;
+        width: 60px;
         height: 1px;
-        /* Horizontal on mobile */
-        margin: 0.5rem 0;
     }
 
-    /* 4. Projects Grid & Rows - Force Single Column */
-    .projects-grid,
-    .project-row,
-    .project-rows-container,
-    .cert-logos-row,
-    .skills-grid,
+    .sidebar-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .certified-logo {
+        max-width: 42px;
+        max-height: 42px;
+    }
+
+    /* Content Areas */
+    .fixed-content-area {
+        padding: 1rem !important;
+    }
+
+    .content-scroll-container {
+        border-radius: 12px;
+    }
+
+    /* Projects - Use native grid behavior */
+    .projects-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem;
+        padding: 0 !important;
+    }
+
+    .project-row {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .project-card {
+        max-width: 100% !important;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* About Grid */
     .about-grid {
         grid-template-columns: 1fr !important;
-        flex-direction: column !important;
-        display: flex !important;
-        align-items: center !important;
-        gap: 2rem !important;
-        width: 100% !important;
+        text-align: center;
     }
 
-    .project-card,
-    .cert-card,
-    .skill-card,
-    .education-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        height: auto !important;
-        /* Allow height to grow */
+    .profile-photo-portfolio {
+        max-width: 200px;
+        margin: 0 auto;
     }
 
-    .project-image {
-        height: 200px;
-        /* Fixed verifyable height */
-    }
-
-    /* 5. Contact Section Stacking */
+    /* Contact Section */
     .contact-split {
         grid-template-columns: 1fr !important;
-        /* Force single col */
+        gap: 2rem;
         padding: 1.5rem !important;
-        gap: 2rem !important;
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
     }
 
     .contact-left {
         border-right: none !important;
         border-bottom: 1px solid var(--border-color);
-        padding-bottom: 2rem;
         padding-right: 0 !important;
-        width: 100% !important;
+        padding-bottom: 2rem;
         text-align: center;
-        align-items: center;
-        /* Center items */
+    }
+
+    .contact-header h2 {
+        font-size: 1rem !important;
     }
 
     .social-links-vertical {
         align-items: center;
-        /* Center social icons */
-        width: 100%;
     }
 
-    .code-greeting {
-        font-size: 1.2rem;
-        /* Smaller code font */
-        padding: 1rem;
-        width: 100%;
-        text-align: left;
-        /* Keep code left aligned but container centered */
-    }
-
-    /* 6. General Layout Padding */
-    .container,
-    .fixed-content-area,
-    .content-box-wrapper {
-        padding-left: 1.5rem !important;
-        padding-right: 1.5rem !important;
-        width: 100% !important;
-    }
-
+    /* Sections & Typography */
     .section {
-        padding: 2rem 0;
+        padding: 2rem 1rem;
     }
 
-    /* 7. Modal Fixes */
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    /* Sub Navigation */
+    .sub-nav {
+        padding: 0.75rem 0;
+    }
+
+    .sub-nav-links {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sub-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    /* Modal */
     .modal {
         width: 95vw !important;
-        height: auto !important;
-        max-height: 80vh !important;
+        max-height: 85vh !important;
     }
 
     .modal-content {
         max-width: 100%;
-        max-height: 70vh;
+        max-height: 75vh;
+    }
+
+    /* PDF View */
+    .pdf-container {
+        border-radius: 8px;
+    }
+
+    /* Footer */
+    .footer {
+        font-size: 0.85rem;
+        padding: 0.75rem 0;
     }
 }
