@@ -644,6 +644,28 @@ body:not(.light-mode) .moon-icon {
     border: 1px solid var(--border-color);
 }
 
+@media (max-width: 768px) {
+    .contact-split {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+
+    .contact-left {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-right: 0;
+        padding-bottom: 2rem;
+        text-align: center;
+        /* Optional: Center align on mobile */
+    }
+
+    .social-links-vertical {
+        align-items: center;
+        /* Center social icons if text is centered */
+    }
+}
+
 .contact-left {
     flex: 1;
     display: flex;
