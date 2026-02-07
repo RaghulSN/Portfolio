@@ -1811,9 +1811,44 @@ body:not(.light-mode) .moon-icon {
         height: 44px;
     }
 
-    .certified-logo {
-        max-width: 42px;
-        max-height: 42px;
+    /* Hide certified logos section on mobile - they break layout */
+    .hero-bottom-right,
+    .cert-logos-row {
+        display: none !important;
+    }
+
+    .sidebar-cert-item {
+        display: none !important;
+    }
+
+    /* Make hero bottom container minimal */
+    .hero-bottom-container {
+        height: auto !important;
+        max-height: 100px !important;
+        overflow: hidden;
+        z-index: 5 !important;
+        /* Below navigation */
+    }
+
+    .hero-bottom-left {
+        gap: 0.8rem;
+    }
+
+    /* Ensure navigation is always visible */
+    .nav-island {
+        z-index: 9999 !important;
+        position: fixed !important;
+    }
+
+    .logo-container {
+        z-index: 9998 !important;
+        display: block !important;
+        /* Force visible */
+        font-size: 1.3rem;
+    }
+
+    .controls-container {
+        z-index: 9998 !important;
     }
 
     /* Content Areas */
