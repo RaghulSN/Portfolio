@@ -1742,16 +1742,172 @@ body:not(.light-mode) .moon-icon {
 }
 
 /* Responsive */
+/* Responsive */
 @media (max-width: 768px) {
+
+    /* 1. Global Overflow Fix */
+    html,
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
+
+    /* 2. Navigation Adjustments */
+    .nav-island {
+        width: 90%;
+        max-width: none;
+        padding: 5px;
+        top: 15px;
+        transform: translateX(-50%) scale(0.9);
+        /* Slightly smaller */
+    }
+
+    .nav-btn {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+        /* Smaller text */
+    }
+
+    .logo-container {
+        display: none;
+        /* Hide logo to save space */
+    }
+
+    .controls-container {
+        top: 80px;
+        /* Push below nav */
+        right: 10px;
+        transform: scale(0.8);
+    }
+
+    .view-section {
+        padding-top: 60px;
+        /* Less top padding */
+    }
+
+    /* 3. Hero Section Typography */
+    .hero-title {
+        font-size: 2.5rem;
+        /* Smaller H1 */
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        text-align: center;
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+    }
+
     .hero-bottom-container {
         flex-direction: column;
-        gap: 2rem;
-        bottom: 5vh;
+        gap: 1.5rem;
+        /* Tighter gap */
+        bottom: 2rem;
+        /* Higher from bottom */
+        width: 100%;
+        padding: 0 1rem;
     }
 
     .hero-separator {
         width: 50px;
         height: 1px;
         /* Horizontal on mobile */
+        margin: 0.5rem 0;
+    }
+
+    /* 4. Projects Grid & Rows - Force Single Column */
+    .projects-grid,
+    .project-row,
+    .project-rows-container,
+    .cert-logos-row,
+    .skills-grid,
+    .about-grid {
+        grid-template-columns: 1fr !important;
+        flex-direction: column !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 2rem !important;
+        width: 100% !important;
+    }
+
+    .project-card,
+    .cert-card,
+    .skill-card,
+    .education-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        height: auto !important;
+        /* Allow height to grow */
+    }
+
+    .project-image {
+        height: 200px;
+        /* Fixed verifyable height */
+    }
+
+    /* 5. Contact Section Stacking */
+    .contact-split {
+        grid-template-columns: 1fr !important;
+        /* Force single col */
+        padding: 1.5rem !important;
+        gap: 2rem !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .contact-left {
+        border-right: none !important;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 2rem;
+        padding-right: 0 !important;
+        width: 100% !important;
+        text-align: center;
+        align-items: center;
+        /* Center items */
+    }
+
+    .social-links-vertical {
+        align-items: center;
+        /* Center social icons */
+        width: 100%;
+    }
+
+    .code-greeting {
+        font-size: 1.2rem;
+        /* Smaller code font */
+        padding: 1rem;
+        width: 100%;
+        text-align: left;
+        /* Keep code left aligned but container centered */
+    }
+
+    /* 6. General Layout Padding */
+    .container,
+    .fixed-content-area,
+    .content-box-wrapper {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        width: 100% !important;
+    }
+
+    .section {
+        padding: 2rem 0;
+    }
+
+    /* 7. Modal Fixes */
+    .modal {
+        width: 95vw !important;
+        height: auto !important;
+        max-height: 80vh !important;
+    }
+
+    .modal-content {
+        max-width: 100%;
+        max-height: 70vh;
     }
 }
