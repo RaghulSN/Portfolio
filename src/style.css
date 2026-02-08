@@ -1752,27 +1752,44 @@ body:not(.light-mode) .moon-icon {
         overflow-x: hidden;
     }
 
-    /* Navigation */
+    /* Navigation - Force Visibility */
     .nav-island {
-        width: 95%;
-        padding: 3px;
+        width: 90% !important;
+        max-width: 400px !important;
+        padding: 6px !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        background: var(--nav-bg) !important;
+        border: 1px solid var(--border-color) !important;
+        top: 15px !important;
+    }
+
+    .nav-links {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: space-between !important;
     }
 
     .nav-btn {
-        padding: 0.5rem 0.9rem;
-        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem !important;
+        font-size: 0.7rem !important;
+        display: inline-block !important;
+        visibility: visible !important;
+        white-space: nowrap !important;
     }
 
     .logo-container {
-        top: 20px;
+        top: 80px !important;
+        /* Move below nav */
         left: 5%;
-        font-size: 1.5rem;
-        /* Smaller logo */
+        font-size: 1.3rem;
     }
 
     .controls-container {
-        top: 20px;
+        top: 15px !important;
         right: 5%;
+        display: flex !important;
     }
 
     /* Hero Section */
