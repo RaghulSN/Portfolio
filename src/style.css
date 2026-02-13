@@ -1787,9 +1787,33 @@ body:not(.light-mode) .moon-icon {
     }
 
     .controls-container {
-        top: 15px !important;
-        right: 5%;
+        position: fixed !important;
+        top: 70px !important;
+        /* Below nav */
+        right: 5% !important;
         display: flex !important;
+        flex-direction: column !important;
+        /* Stack vertically */
+        gap: 0.5rem !important;
+        z-index: 9999 !important;
+    }
+
+    .icon-btn {
+        width: 44px !important;
+        height: 44px !important;
+        padding: 10px !important;
+        background: var(--nav-bg) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 50% !important;
+        cursor: pointer !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .icon {
+        width: 22px !important;
+        height: 22px !important;
     }
 
     /* Hero Section */
@@ -1909,23 +1933,135 @@ body:not(.light-mode) .moon-icon {
         margin: 0 auto;
     }
 
-    /* Contact Section */
+    /* Contact Section - Fit Between Logo and Footer */
+    #contact-view .fixed-content-area {
+        padding-top: 110px !important;
+        /* Below logo */
+        padding-bottom: 50px !important;
+        /* Above footer */
+        height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    .contact-section {
+        padding: 0 !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* Contact Section - Side-by-Side Mobile Layout */
     .contact-split {
-        grid-template-columns: 1fr !important;
-        gap: 2rem;
-        padding: 1.5rem !important;
+        grid-template-columns: 35% 65% !important;
+        /* Left: Info, Right: Form */
+        gap: 0.5rem !important;
+        padding: 0.5rem !important;
+        padding-bottom: 2.5rem !important;
+        /* Space for button at bottom */
+        align-items: start !important;
+        /* Align to top */
+        height: 100% !important;
+        overflow: hidden !important;
+        /* No scroll */
     }
 
     .contact-left {
-        border-right: none !important;
-        border-bottom: 1px solid var(--border-color);
-        padding-right: 0 !important;
-        padding-bottom: 2rem;
-        text-align: center;
+        border-right: 1px solid var(--border-color) !important;
+        border-bottom: none !important;
+        padding-right: 0.5rem !important;
+        padding-bottom: 0 !important;
+        padding-top: 1rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        height: 100% !important;
     }
 
-    .contact-header h2 {
-        font-size: 1rem !important;
+    .contact-header {
+        margin-bottom: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 100% !important;
+    }
+
+    /* Hide the text header to save space, just show icons? 
+       Or make it very small. User said 'mail linkedin contact in left'. 
+    */
+    .cool-header {
+        display: none !important;
+        /* Hide large greeting */
+    }
+
+    .social-links-vertical {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        /* Space out icons vertically */
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    /* Social Items - Compact / Stacked */
+    .social-item-row {
+        padding: 0 !important;
+        justify-content: center !important;
+        width: 100% !important;
+        border: none !important;
+        background: transparent !important;
+    }
+
+    .social-item-row span:not(.social-icon-wrapper) {
+        display: none !important;
+        /* Hide text (email/linkedin) to save width */
+    }
+
+    .social-icon-wrapper {
+        width: 40px !important;
+        height: 40px !important;
+        background: var(--bg-hover) !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* Right Side - Form */
+    .contact-right {
+        padding-left: 0.25rem !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+    }
+
+    .contact-form {
+        gap: 0.5rem !important;
+        padding-bottom: 0 !important;
+        width: 100% !important;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.5rem !important;
+        font-size: 0.8rem !important;
+        border-radius: 6px !important;
+    }
+
+    .form-group textarea {
+        min-height: 60px !important;
+        max-height: 60px !important;
+    }
+
+    .contact-form .btn {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.8rem !important;
+        margin-top: 0.25rem !important;
+        margin-bottom: 0 !important;
+        width: 100% !important;
     }
 
     .social-links-vertical {
@@ -1973,9 +2109,84 @@ body:not(.light-mode) .moon-icon {
         max-height: 75vh;
     }
 
-    /* PDF View */
+    /* PDF View - STRICT Fit Between Logo and Footer */
+    #resume-view .fixed-content-area {
+        position: fixed !important;
+        top: 110px !important;
+        /* Start exactly below logo area */
+        bottom: 60px !important;
+        /* Stop exactly above footer/socials */
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        /* Let top/bottom define height */
+        padding: 0 1rem !important;
+        /* Side padding */
+        margin: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .resume-layout {
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+
     .pdf-container {
+        flex: 1 !important;
+        /* Take all remaining vertical space */
+        width: 100% !important;
+        min-height: 0 !important;
+        /* Allow shrinking */
         border-radius: 8px;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .pdf-wrapper {
+        flex: 1 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: #525659;
+        /* PDF viewer background color */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow: hidden !important;
+    }
+
+    #pdf-viewer {
+        width: 100% !important;
+        height: 100% !important;
+        border: none !important;
+        object-fit: contain !important;
+        /* Key: fit entire page on screen */
+    }
+
+    .resume-layout {
+        padding: 0.5rem !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .pdf-controls {
+        padding: 0.5rem !important;
+        gap: 0.5rem !important;
+        flex-shrink: 0 !important;
+        /* Don't compress controls */
+        background: var(--bg-secondary) !important;
+    }
+
+    .pdf-controls button {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.8rem !important;
     }
 
     /* Footer */
