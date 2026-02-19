@@ -15,6 +15,9 @@
         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Outfit:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap"
         rel="stylesheet">
 
+    <!-- Preload Critical Profile Image (LCP) -->
+    <link rel="preload" as="image" href="./Photo/Raghul.jpg">
+
     <link rel="stylesheet" href="./src/style.css" />
 </head>
 
@@ -192,7 +195,8 @@
                                         </div>
                                         <div class="about-visual">
                                             <!-- Profile Photo -->
-                                            <img src="./Photo/Raghul.jpg" alt="Raghul" class="profile-photo-portfolio">
+                                            <img src="./Photo/Raghul.jpg" alt="Raghul" class="profile-photo-portfolio"
+                                                fetchpriority="high">
                                         </div>
                                     </div>
                                 </div>
@@ -311,7 +315,8 @@
                                                 <div class="project-image" style="height: auto; padding: 0;">
                                                     <img src="./Certificates/Google 1.jpg"
                                                         alt="Cloud Data Fusion Lineage"
-                                                        style="width: 100%; height: auto; display: block;">
+                                                        style="width: 100%; height: auto; display: block;"
+                                                        loading="lazy" decoding="async">
                                                     <!-- Logo Grouped Inside Image Container -->
                                                     <div class="cert-logo-container">
                                                         <img src="./Logo/Google.png" alt="Google Logo"
@@ -334,7 +339,8 @@
                                                 <div class="project-image" style="height: auto; padding: 0;">
                                                     <img src="./Certificates/Google 2.jpg"
                                                         alt="Crypto Datasets in BigQuery"
-                                                        style="width: 100%; height: auto; display: block;">
+                                                        style="width: 100%; height: auto; display: block;"
+                                                        loading="lazy" decoding="async">
                                                     <!-- Logo Grouped Inside Image Container -->
                                                     <div class="cert-logo-container">
                                                         <img src="./Logo/Google.png" alt="Google Logo"
@@ -372,7 +378,8 @@
                                         <article class="project-card cert-card" data-full="./Certificates/NSDC.jpg">
                                             <div class="project-image" style="height: auto; padding: 0;">
                                                 <img src="./Certificates/NSDC.jpg" alt="NSDC Data Science and AI"
-                                                    style="width: 100%; height: auto; display: block;">
+                                                    style="width: 100%; height: auto; display: block;" loading="lazy"
+                                                    decoding="async">
                                                 <div class="cert-logo-container">
                                                     <img src="./Logo/NSDC.png" alt="NSDC Logo" class="brand-logo"
                                                         style="width: 50px; height: auto;">
@@ -392,7 +399,8 @@
                                         <article class="project-card cert-card" data-full="./Certificates/IBM.jpg">
                                             <div class="project-image" style="height: auto; padding: 0;">
                                                 <img src="./Certificates/IBM.jpg" alt="IBM Data Science"
-                                                    style="width: 100%; height: auto; display: block;">
+                                                    style="width: 100%; height: auto; display: block;" loading="lazy"
+                                                    decoding="async">
                                                 <div class="cert-logo-container">
                                                     <img src="./Logo/IBM.png" alt="IBM Logo" class="brand-logo"
                                                         style="width: 40px;">
@@ -414,7 +422,8 @@
                                             <div class="project-image" style="height: auto; padding: 0;">
                                                 <img src="./Certificates/Google.jpg"
                                                     alt="Google Advanced Data Analytics"
-                                                    style="width: 100%; height: auto; display: block;">
+                                                    style="width: 100%; height: auto; display: block;" loading="lazy"
+                                                    decoding="async">
                                                 <div class="cert-logo-container">
                                                     <img src="./Logo/Google.png" alt="Google Logo" class="brand-logo">
                                                 </div>
@@ -433,7 +442,8 @@
                                         <article class="project-card cert-card" data-full="./Certificates/Meta.jpg">
                                             <div class="project-image" style="height: auto; padding: 0;">
                                                 <img src="./Certificates/Meta.jpg" alt="Meta Data Analyst"
-                                                    style="width: 100%; height: auto; display: block;">
+                                                    style="width: 100%; height: auto; display: block;" loading="lazy"
+                                                    decoding="async">
                                                 <div class="cert-logo-container">
                                                     <img src="./Logo/Meta.png" alt="Meta Logo" class="brand-logo"
                                                         style="width: 40px;">
@@ -455,7 +465,8 @@
                                             <div class="project-image" style="height: auto; padding: 0;">
                                                 <img src="./Certificates/Microsoft.jpg"
                                                     alt="Microsoft Power BI Data Analyst"
-                                                    style="width: 100%; height: auto; display: block;">
+                                                    style="width: 100%; height: auto; display: block;" loading="lazy"
+                                                    decoding="async">
                                                 <div class="cert-logo-container">
                                                     <img src="./Logo/Micrsoft.png" alt="Microsoft Logo"
                                                         class="brand-logo" style="width: 30px;">
@@ -493,7 +504,8 @@
                                         <article class="project-card cert-card" data-full="./Certificates/Scaler.jpeg">
                                             <div class="project-image" style="height: auto; padding: 0;">
                                                 <img src="./Certificates/Scaler.jpeg" alt="Scaler Workshop"
-                                                    style="width: 100%; height: auto; display: block;">
+                                                    style="width: 100%; height: auto; display: block;" loading="lazy"
+                                                    decoding="async">
                                                 <div class="cert-logo-container">
                                                     <img src="https://logo.clearbit.com/scaler.com" alt="Scaler Logo"
                                                         class="brand-logo" onerror="this.style.display='none'">
@@ -513,7 +525,8 @@
                                             data-full="./Certificates/Skillnation.jpg">
                                             <div class="project-image" style="height: auto; padding: 0;">
                                                 <img src="./Certificates/Skillnation.jpg" alt="SkillNation Workshop"
-                                                    style="width: 100%; height: auto; display: block;">
+                                                    style="width: 100%; height: auto; display: block;" loading="lazy"
+                                                    decoding="async">
                                                 <div class="cert-logo-container">
                                                     <img src="https://logo.clearbit.com/skillnation.in"
                                                         alt="SkillNation Logo" class="brand-logo"
@@ -535,7 +548,8 @@
                                         <article class="project-card cert-card" data-full="./Certificates/Be10x.jpg">
                                             <div class="project-image" style="height: auto; padding: 0;">
                                                 <img src="./Certificates/Be10x.jpg" alt="Be10x Workshop"
-                                                    style="width: 100%; height: auto; display: block;">
+                                                    style="width: 100%; height: auto; display: block;" loading="lazy"
+                                                    decoding="async">
                                                 <div class="cert-logo-container">
                                                     <img src="https://logo.clearbit.com/be10x.in" alt="Be10x Logo"
                                                         class="brand-logo" onerror="this.style.display='none'">
@@ -554,7 +568,8 @@
                                         <article class="project-card cert-card" data-full="./Certificates/Redteam.jpg">
                                             <div class="project-image" style="height: auto; padding: 0;">
                                                 <img src="./Certificates/Redteam.jpg" alt="RedTeam Hacker Academy"
-                                                    style="width: 100%; height: auto; display: block;">
+                                                    style="width: 100%; height: auto; display: block;" loading="lazy"
+                                                    decoding="async">
                                                 <div class="cert-logo-container">
                                                     <img src="https://logo.clearbit.com/redteamacademy.com"
                                                         alt="RedTeam Logo" class="brand-logo"
@@ -584,7 +599,7 @@
                                         <div class="education-card">
                                             <div class="edu-header">
                                                 <h3>Bachelor of Science in Mathematics</h3>
-                                                <span class="edu-year">July 2025</span>
+                                                <span class="edu-year">2017 - 2020</span>
                                             </div>
                                             <span class="edu-school">University of Kerala</span>
                                             <p><strong>Project:</strong> LaTeX Typesetting & Python Programming -
@@ -612,8 +627,8 @@
                                 <div id="pdf-container" class="pdf-container">
 
                                     <!-- PDF Embed -->
-                                    <embed id="pdf-embed" src="./Raghul_S_Nair_Resume.pdf" type="application/pdf"
-                                        width="100%" height="100%" />
+                                    <embed id="pdf-embed" src="./Raghul_S_Nair_Resume.pdf#view=FitH"
+                                        type="application/pdf" width="100%" height="100%" />
                                     <div class="pdf-placeholder-message" style="display: none;">
                                         <p>Unable to load PDF.</p>
                                     </div>
@@ -683,36 +698,37 @@
                                                 </a>
                                             </div>
                                         </div>
+                                    </div> <!-- END contact-left -->
 
-                                        <!-- Right: Form -->
-                                        <div class="contact-right">
-                                            <form class="contact-form"
-                                                action="https://docs.google.com/forms/d/e/1FAIpQLSebZV96lMW-lcNH1O00HerDcE59RB6lGD3NQV2bsKS91cJgag/formResponse"
-                                                method="POST" target="hidden_iframe">
+                                    <!-- Right: Form -->
+                                    <div class="contact-right">
+                                        <form class="contact-form"
+                                            action="https://docs.google.com/forms/d/e/1FAIpQLSebZV96lMW-lcNH1O00HerDcE59RB6lGD3NQV2bsKS91cJgag/formResponse"
+                                            method="POST" target="hidden_iframe">
 
-                                                <!-- Hidden Fields from Google Forms -->
-                                                <input type="hidden" name="fvv" value="1">
-                                                <input type="hidden" name="fbzx" value="-4513592225152752280">
-                                                <input type="hidden" name="pageHistory" value="0">
+                                            <!-- Hidden Fields from Google Forms -->
+                                            <input type="hidden" name="fvv" value="1">
+                                            <input type="hidden" name="fbzx" value="-4513592225152752280">
+                                            <input type="hidden" name="pageHistory" value="0">
 
-                                                <div class="form-group">
-                                                    <input type="text" name="entry.1696622039" placeholder="Your Name"
-                                                        required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="email" name="entry.999325433" placeholder="Your Email"
-                                                        required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <textarea name="entry.1003602447" placeholder="Your Message"
-                                                        rows="5" required></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary btn-large">Send
-                                                    Message</button>
-                                            </form>
-                                            <iframe name="hidden_iframe" style="display:none;"></iframe>
-                                        </div>
+                                            <div class="form-group">
+                                                <input type="text" name="entry.1696622039" placeholder="Your Name"
+                                                    required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" name="entry.999325433" placeholder="Your Email"
+                                                    required>
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea name="entry.1003602447" placeholder="Your Message" rows="5"
+                                                    required></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary btn-large">Send
+                                                Message</button>
+                                        </form>
+                                        <iframe name="hidden_iframe" style="display:none;"></iframe>
                                     </div>
+                                </div>
                         </section>
                     </div>
                 </div>

@@ -216,9 +216,18 @@ body {
     padding: 1rem 2rem;
 }
 
-/* Resume override: same gap as Portfolio */
+/* Resume override: fit between logo and footer */
+#resume-view .fixed-view-wrapper {
+    padding-top: var(--nav-height);
+    padding-bottom: 0;
+}
+
 #resume-view .fixed-content-area {
-    padding: 1rem 2rem;
+    padding: 0.5rem 1rem;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Portfolio box with max height */
@@ -646,23 +655,22 @@ body:not(.light-mode) .moon-icon {
 
 @media (max-width: 768px) {
     .contact-split {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 1.5rem;
+        grid-template-columns: 80px 1fr !important;
+        /* Icons column + Form column */
+        gap: 0.5rem !important;
+        padding: 0.5rem !important;
     }
 
     .contact-left {
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-        padding-right: 0;
-        padding-bottom: 2rem;
+        border-right: 1px solid var(--border-color) !important;
+        border-bottom: none !important;
+        padding-right: 0 !important;
+        padding-bottom: 0 !important;
         text-align: center;
-        /* Optional: Center align on mobile */
     }
 
     .social-links-vertical {
         align-items: center;
-        /* Center social icons if text is centered */
     }
 }
 
@@ -882,7 +890,9 @@ body:not(.light-mode) .moon-icon {
     gap: 2rem;
 }
 
-.projects-grid {
+.projects-grid,
+.project-row {
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2.5rem;
 }
@@ -1836,44 +1846,72 @@ body:not(.light-mode) .moon-icon {
     }
 
     .hero-bottom-container {
-        flex-direction: column;
-        gap: 1.5rem;
-        bottom: 3rem;
-        padding: 0 1rem;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.8rem;
+        bottom: 2rem;
+        padding: 0 0.5rem;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        z-index: 5 !important;
     }
 
     .hero-separator {
-        width: 60px;
-        height: 1px;
+        display: none !important;
+        /* Hide separator in vertical layout */
+    }
+
+    /* Left icons - horizontal row on top */
+    .hero-bottom-left {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 0.6rem !important;
+        justify-content: center !important;
     }
 
     .sidebar-icon {
-        width: 44px;
-        height: 44px;
+        width: 32px !important;
+        height: 32px !important;
     }
 
-    /* Hide certified logos section on mobile - they break layout */
-    .hero-bottom-right,
+    /* Right cert logos - horizontal row below */
+    .hero-bottom-right {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.3rem !important;
+        width: 100% !important;
+    }
+
+    .certified-text {
+        font-size: 0.7rem !important;
+        opacity: 0.7;
+        margin-top: 3rem !important;
+        margin-bottom: -0.1rem !important;
+    }
+
     .cert-logos-row {
-        display: none !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 0.4rem !important;
     }
 
     .sidebar-cert-item {
-        display: none !important;
+        display: flex !important;
+        width: 32px !important;
+        height: 32px !important;
+        flex-shrink: 0 !important;
     }
 
-    /* Make hero bottom container minimal */
-    .hero-bottom-container {
-        height: auto !important;
-        max-height: 100px !important;
-        overflow: hidden;
-        z-index: 5 !important;
-        /* Below navigation */
+    .sidebar-cert-item img {
+        width: 32px !important;
+        height: 32px !important;
+        object-fit: contain !important;
     }
 
-    .hero-bottom-left {
-        gap: 0.8rem;
-    }
 
     /* Ensure navigation is always visible */
     .nav-island {
@@ -1901,20 +1939,53 @@ body:not(.light-mode) .moon-icon {
         border-radius: 12px;
     }
 
+    /* Portfolio View - Start after Logo */
+    #portfolio-view .fixed-content-area {
+        padding-top: 60px !important;
+        /* 80px (wrapper) + 60px = 140px total start (clears 120px logo) */
+        display: block !important;
+        /* Ensure block layout for scrolling */
+    }
+
     /* Projects - Use native grid behavior */
-    .projects-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem;
-        padding: 0 !important;
-    }
-
+    .projects-grid,
     .project-row {
-        flex-direction: column;
-        gap: 1.5rem;
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: 1fr !important;
+        gap: 3.5rem !important;
+        /* Increased spacing */
+        padding: 0 !important;
+        margin-top: 1rem !important;
     }
 
-    .project-card {
+    .project-card,
+    .project-row .project-card {
+        width: 100% !important;
         max-width: 100% !important;
+        flex: none !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        margin: 0 !important;
+    }
+
+    .project-content {
+        padding: 1.5rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .project-desc {
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        margin-bottom: 1rem !important;
+        line-height: 1.6 !important;
+    }
+
+    .project-tags {
+        margin-bottom: 0.5rem !important;
     }
 
     /* Skills Grid */
@@ -1951,31 +2022,29 @@ body:not(.light-mode) .moon-icon {
         justify-content: center !important;
     }
 
-    /* Contact Section - Side-by-Side Mobile Layout */
+    /* Contact Section - Side-by-Side Mobile Layout (Grid) */
     .contact-split {
-        grid-template-columns: 35% 65% !important;
-        /* Left: Info, Right: Form */
+        display: grid !important;
+        grid-template-columns: 80px 1fr !important;
+        /* Icons Left, Form Right */
         gap: 0.5rem !important;
         padding: 0.5rem !important;
-        padding-bottom: 2.5rem !important;
-        /* Space for button at bottom */
-        align-items: start !important;
-        /* Align to top */
+        padding-bottom: 3rem !important;
+        align-items: center !important;
         height: 100% !important;
         overflow: hidden !important;
-        /* No scroll */
     }
 
     .contact-left {
+        position: static !important;
+        width: auto !important;
         border-right: 1px solid var(--border-color) !important;
         border-bottom: none !important;
-        padding-right: 0.5rem !important;
-        padding-bottom: 0 !important;
-        padding-top: 1rem !important;
+        padding: 0 !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
-        height: 100% !important;
+        align-items: center !important;
     }
 
     .contact-header {
@@ -2031,11 +2100,13 @@ body:not(.light-mode) .moon-icon {
 
     /* Right Side - Form */
     .contact-right {
-        padding-left: 0.25rem !important;
+        margin-left: 0 !important;
+        width: auto !important;
         height: 100% !important;
         display: flex !important;
         flex-direction: column !important;
         justify-content: center !important;
+        position: static !important;
     }
 
     .contact-form {
@@ -2109,23 +2180,23 @@ body:not(.light-mode) .moon-icon {
         max-height: 75vh;
     }
 
-    /* PDF View - STRICT Fit Between Logo and Footer */
+    /* PDF View - Dynamically Fit Between Logo and Footer */
     #resume-view .fixed-content-area {
         position: fixed !important;
-        top: 110px !important;
-        /* Start exactly below logo area */
-        bottom: 60px !important;
-        /* Stop exactly above footer/socials */
+        top: 115px !important;
+        /* Logo is at 80px + ~35px height */
+        bottom: 40px !important;
+        /* Right before footer */
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
-        height: auto !important;
-        /* Let top/bottom define height */
-        padding: 0 1rem !important;
-        /* Side padding */
+        height: calc(100vh - 115px - 40px) !important;
+        /* viewport minus logo(115) minus footer(40) */
+        padding: 0.5rem !important;
         margin: 0 !important;
         display: flex !important;
         flex-direction: column !important;
+        box-sizing: border-box !important;
     }
 
     .resume-layout {
@@ -2134,15 +2205,15 @@ body:not(.light-mode) .moon-icon {
         padding: 0 !important;
         display: flex !important;
         flex-direction: column !important;
-        gap: 0.5rem !important;
+        gap: 0 !important;
+        flex: 1 !important;
+        min-height: 0 !important;
     }
 
     .pdf-container {
         flex: 1 !important;
-        /* Take all remaining vertical space */
         width: 100% !important;
         min-height: 0 !important;
-        /* Allow shrinking */
         border-radius: 8px;
         overflow: hidden !important;
         display: flex !important;
@@ -2153,27 +2224,29 @@ body:not(.light-mode) .moon-icon {
         flex: 1 !important;
         width: 100% !important;
         height: 100% !important;
+        min-height: 0 !important;
         background: #525659;
-        /* PDF viewer background color */
         display: flex !important;
-        align-items: center !important;
+        align-items: stretch !important;
         justify-content: center !important;
         overflow: hidden !important;
     }
 
+    #pdf-embed,
     #pdf-viewer {
         width: 100% !important;
         height: 100% !important;
         border: none !important;
         object-fit: contain !important;
-        /* Key: fit entire page on screen */
     }
 
     .resume-layout {
-        padding: 0.5rem !important;
+        padding: 0.25rem !important;
         height: 100% !important;
         display: flex !important;
         flex-direction: column !important;
+        flex: 1 !important;
+        min-height: 0 !important;
     }
 
     .pdf-controls {
@@ -2193,5 +2266,49 @@ body:not(.light-mode) .moon-icon {
     .footer {
         font-size: 0.85rem;
         padding: 0.75rem 0;
+    }
+}
+
+/* End of mobile media query */
+
+/* FORCE DESKTOP LAYOUT (Safety Net) */
+@media (min-width: 769px) {
+    .contact-split {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        position: static !important;
+        padding: 3rem !important;
+        overflow: visible !important;
+        gap: 4rem !important;
+        height: auto !important;
+    }
+
+    .contact-left {
+        position: static !important;
+        width: auto !important;
+        padding: 0 !important;
+        border-right: 1px solid var(--border-color) !important;
+        border-bottom: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        background: transparent !important;
+    }
+
+    .contact-right {
+        margin-left: 0 !important;
+        width: auto !important;
+        position: static !important;
+        display: block !important;
+    }
+
+    .cool-header,
+    .social-item-row span {
+        display: inline-block !important;
+        /* Show text on desktop */
+    }
+
+    .social-links-vertical {
+        align-items: flex-start !important;
     }
 }
